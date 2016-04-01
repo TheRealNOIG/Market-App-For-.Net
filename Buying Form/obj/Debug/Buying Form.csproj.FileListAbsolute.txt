@@ -1,0 +1,13 @@
+c:\users\tyler gregorcyk\documents\visual studio 2015\Projects\Buying Form\Buying Form\bin\Debug\Buying Form.exe.config
+c:\users\tyler gregorcyk\documents\visual studio 2015\Projects\Buying Form\Buying Form\bin\Debug\Buying Form.exe
+c:\users\tyler gregorcyk\documents\visual studio 2015\Projects\Buying Form\Buying Form\bin\Debug\Buying Form.pdb
+c:\users\tyler gregorcyk\documents\visual studio 2015\Projects\Buying Form\Buying Form\obj\Debug\Buying Form.csprojResolveAssemblyReference.cache
+c:\users\tyler gregorcyk\documents\visual studio 2015\Projects\Buying Form\Buying Form\obj\Debug\Buying_Form.ShopGUI.resources
+c:\users\tyler gregorcyk\documents\visual studio 2015\Projects\Buying Form\Buying Form\obj\Debug\Buying_Form.Properties.Resources.resources
+c:\users\tyler gregorcyk\documents\visual studio 2015\Projects\Buying Form\Buying Form\obj\Debug\Buying Form.csproj.GenerateResource.Cache
+c:\users\tyler gregorcyk\documents\visual studio 2015\Projects\Buying Form\Buying Form\obj\Debug\Buying Form.exe
+c:\users\tyler gregorcyk\documents\visual studio 2015\Projects\Buying Form\Buying Form\obj\Debug\Buying Form.pdb
+C:\Users\Tyler Gregorcyk\documents\visual studio 2015\Projects\Buying Form\Buying Form\bin\Debug\StoreLibrary.dll
+C:\Users\Tyler Gregorcyk\documents\visual studio 2015\Projects\Buying Form\Buying Form\bin\Debug\StoreLibrary.pdb
+C:\Users\Tyler Gregorcyk\documents\visual studio 2015\Projects\Buying Form\Buying Form\bin\Debug\TylerGregorcyksLibrary.dll
+C:\Users\Tyler Gregorcyk\documents\visual studio 2015\Projects\Buying Form\Buying Form\bin\Debug\TylerGregorcyksLibrary.pdb
