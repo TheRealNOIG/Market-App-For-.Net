@@ -70,17 +70,21 @@
             this.itemListBox.Name = "itemListBox";
             this.itemListBox.Size = new System.Drawing.Size(474, 274);
             this.itemListBox.TabIndex = 2;
+            this.itemListBox.SelectedIndexChanged += new System.EventHandler(this.itemListBox_SelectedIndexChanged);
             // 
             // infoBox
             // 
             this.infoBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.infoBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
             this.infoBox.FormattingEnabled = true;
             this.infoBox.ItemHeight = 18;
             this.infoBox.Location = new System.Drawing.Point(553, 107);
             this.infoBox.Name = "infoBox";
             this.infoBox.Size = new System.Drawing.Size(385, 274);
             this.infoBox.TabIndex = 4;
+            this.infoBox.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.infoBox_DrawItem);
+            this.infoBox.MeasureItem += new System.Windows.Forms.MeasureItemEventHandler(this.infoBox_MeasureItem);
             // 
             // infoWindow
             // 

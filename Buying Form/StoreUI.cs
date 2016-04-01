@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using StoreLibrary;
+using System.Drawing;
 
 namespace Buying_Form
 {
@@ -42,7 +43,7 @@ namespace Buying_Form
             store.Items.Add(new Item
             {
                 Name = "OG Kush",
-                Description = "Get High As FUUUUCKK with this shit",
+                Description = "Get High As FUUUUCKK with this shit BOOOOOOOOOOOOOOOOOOOOYYYY",
                 Price = 17.99f,
                 AmountOfRequestsForItem = 78,
                 Owner = store.Vendors[1]
@@ -63,6 +64,30 @@ namespace Buying_Form
                 AmountOfRequestsForItem = 1,
                 Owner = store.Vendors[1]
             });
+        }
+
+        private void itemListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //Need to populate the info window with all the info of the item
+            Item selectedItem = (Item)itemListBox.SelectedItem;
+            infoBox.Items.Clear();
+            infoBox.Items.Add("Name: " + selectedItem.Name);
+            infoBox.Items.Add("Desciption: " + selectedItem.Description);
+            infoBox.Items.Add("Price: $" + selectedItem.Price);
+            infoBox.Items.Add("Seller: " + selectedItem.Owner);
+            infoBox.Items.Add("Number of others trying to buy this product " + selectedItem.AmountOfRequestsForItem);
+        }
+
+        private void infoBox_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            e.DrawBackground();
+            e.DrawFocusRectangle();
+            e.Graphics.DrawString(infoBox.Items[e.Index].ToString(), e.Font, new SolidBrush(e.ForeColor), e.Bounds);
+        }
+
+        private void infoBox_MeasureItem(object sender, MeasureItemEventArgs e)
+        {
+            e.ItemHeight = (int)e.Graphics.MeasureString(infoBox.Items[e.Index].ToString(), infoBox.Font, infoBox.Width).Height;
         }
     }
 }
