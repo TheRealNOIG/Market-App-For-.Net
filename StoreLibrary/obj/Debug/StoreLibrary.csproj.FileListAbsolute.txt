@@ -1,7 +1,0 @@
-C:\Users\Tyler Gregorcyk\documents\visual studio 2015\Projects\Buying Form\StoreLibrary\bin\Debug\StoreLibrary.dll
-C:\Users\Tyler Gregorcyk\documents\visual studio 2015\Projects\Buying Form\StoreLibrary\bin\Debug\StoreLibrary.pdb
-C:\Users\Tyler Gregorcyk\documents\visual studio 2015\Projects\Buying Form\StoreLibrary\obj\Debug\StoreLibrary.csprojResolveAssemblyReference.cache
-C:\Users\Tyler Gregorcyk\documents\visual studio 2015\Projects\Buying Form\StoreLibrary\obj\Debug\StoreLibrary.dll
-C:\Users\Tyler Gregorcyk\documents\visual studio 2015\Projects\Buying Form\StoreLibrary\obj\Debug\StoreLibrary.pdb
-C:\Users\Tyler Gregorcyk\documents\visual studio 2015\Projects\Buying Form\StoreLibrary\bin\Debug\TylerGregorcyksLibrary.dll
-C:\Users\Tyler Gregorcyk\documents\visual studio 2015\Projects\Buying Form\StoreLibrary\bin\Debug\TylerGregorcyksLibrary.pdb
