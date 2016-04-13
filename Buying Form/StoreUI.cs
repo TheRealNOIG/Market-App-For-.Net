@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using StoreLibrary;
 using System.Drawing;
+using System.Threading;
 
 namespace Buying_Form
 {
@@ -10,16 +11,28 @@ namespace Buying_Form
 
         Store store = new Store();
         BindingSource itemsBinding = new BindingSource();
+        Client client = new Client();
 
         public ShopGUI()
         {
             InitializeComponent();
-            SetupVoid();
-            store.ArrangeItemsAlphabetically();
-            showListOfItems();
+            makeLoadingForm();
+            Thread setupThread = new Thread(this.setup); setupThread.IsBackground = true; setupThread.Start();
         }
 
-        void showListOfItems() {
+        private void setup()
+        {
+            client.startClient();
+            SetupVendorsAndItems();
+            store.ArrangeItemsAlphabetically();
+            this.Invoke((MethodInvoker)delegate () {
+                showListOfItems();
+                killLoadingForm();
+            });
+            Thread.CurrentThread.Abort();
+        }
+
+        private void showListOfItems() {
             itemsBinding.DataSource = store.Items;
             itemListBox.DataSource = itemsBinding;
 
@@ -27,55 +40,54 @@ namespace Buying_Form
             itemListBox.ValueMember = "DisplayNamePrice";
         }
 
-        private void SetupVoid()
+        private void SetupVendorsAndItems()
         {
-            store.Vendors.Add(new Vendor { FirstName = "Tyler", LastName = "Gregorcyk", Email = "tyler.gregorcyk@gmail.com", ItemsSold = 99, Location = "North Austin", ID = 1998 });
-            store.Vendors.Add(new Vendor { FirstName = "Barack ", LastName = "Obama", Email = "therealnoig@gmail.com", ItemsSold = -2, Location = "Your Moms", ID = 1 });
-
-            store.Items.Add(new Item
-            {
-                Name = "GRad",
-                Description = "Some gooooood GRad",
-                Price = 3.50f,
-                AmountOfRequestsForItem = 0,
-                Owner = store.Vendors[0]
-            });
-            store.Items.Add(new Item
-            {
-                Name = "OG Kush",
-                Description = "Get High As FUUUUCKK with this shit BOOOOOOOOOOOOOOOOOOOOYYYY",
-                Price = 17.99f,
-                AmountOfRequestsForItem = 78,
-                Owner = store.Vendors[1]
-            });
-            store.Items.Add(new Item
-            {
-                Name = "Balls",
-                Description = "2 Big Balls",
-                Price = 198.21f,
-                AmountOfRequestsForItem = -5,
-                Owner = store.Vendors[0]
-            });
-            store.Items.Add(new Item
-            {
-                Name = "First Laddy",
-                Description = "Old but still perky",
-                Price = 29f,
-                AmountOfRequestsForItem = 1,
-                Owner = store.Vendors[1]
-            });
+            store.Vendors = client.getVenderList();
+            store.Items = client.getItemList(store.Vendors);
         }
 
-        private void itemListBox_SelectedIndexChanged(object sender, EventArgs e)
+        Form formy;
+        private void makeLoadingForm()
         {
-            //Need to populate the info window with all the info of the item
-            Item selectedItem = (Item)itemListBox.SelectedItem;
-            infoBox.Items.Clear();
-            infoBox.Items.Add("Name: " + selectedItem.Name);
-            infoBox.Items.Add("Desciption: " + selectedItem.Description);
-            infoBox.Items.Add("Price: $" + selectedItem.Price);
-            infoBox.Items.Add("Seller: " + selectedItem.Owner);
-            infoBox.Items.Add("Number of others trying to buy this product " + selectedItem.AmountOfRequestsForItem);
+            this.panel1.Enabled = false;
+            formy = new Form();
+            formy.Width = 200;
+            formy.Height = 25;
+            formy.StartPosition = FormStartPosition.CenterScreen;
+            formy.FormBorderStyle = FormBorderStyle.None;
+            formy.BackColor = Color.White;
+            formy.TopMost = true;
+
+            Label label = new Label();
+            label.Font = new System.Drawing.Font("Arial Black", 10f, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label.Location = new Point(5, 5);
+            label.Size = new Size(500, 75);
+            label.Text = "Loading Please Wait...";
+            formy.Controls.Add(label);
+            formy.Show();
+        }
+        private void killLoadingForm()
+        {
+            formy.Close();
+            this.panel1.Enabled = true;
+        }
+
+        private void refreshForm()
+        {
+            this.Invoke((MethodInvoker)delegate () {
+                this.panel1.Enabled = false;
+                makeLoadingForm();
+            });
+            store.Vendors.Clear();
+            store.Items.Clear();
+            SetupVendorsAndItems();
+            store.ArrangeItemsAlphabetically();
+            showListOfItems();
+            this.Invoke((MethodInvoker)delegate () {
+                this.panel1.Enabled = true;
+                killLoadingForm();
+            });
+            Thread.CurrentThread.Abort();
         }
 
         private void infoBox_DrawItem(object sender, DrawItemEventArgs e)
@@ -88,6 +100,24 @@ namespace Buying_Form
         private void infoBox_MeasureItem(object sender, MeasureItemEventArgs e)
         {
             e.ItemHeight = (int)e.Graphics.MeasureString(infoBox.Items[e.Index].ToString(), infoBox.Font, infoBox.Width).Height;
+        }
+
+        private void refreshButton_Click(object sender, EventArgs e)
+        {
+            new Thread(new ThreadStart(this.refreshForm)).Start();
+        }
+
+        private void itemListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //Need to populate the info window with all the info of the item
+            Item selectedItem = (Item)itemListBox.SelectedItem;
+            infoBox.Items.Clear();
+            infoBox.Items.Add("Name: " + selectedItem.Name);
+            infoBox.Items.Add("Desciption: " + selectedItem.Description);
+            infoBox.Items.Add("Price: $" + selectedItem.Price);
+            infoBox.Items.Add("Amount: " + selectedItem.Amount);
+            infoBox.Items.Add("Seller: " + selectedItem.Owner.FirstName + " " + selectedItem.Owner.LastName);
+            infoBox.Items.Add("Number Of Others Trying To Buy This Product: " + selectedItem.AmountOfRequestsForItem);
         }
     }
 }

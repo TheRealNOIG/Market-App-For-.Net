@@ -9,6 +9,7 @@ namespace StoreLibrary
         public string Email { get; set; }
         public int ItemsSold { get; set; }
         public string Location { get; set; }
+        public string DateJoined { get; set; }
         public int ID { get; set; }
 
     }
