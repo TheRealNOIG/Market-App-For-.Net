@@ -14,7 +14,7 @@ namespace StoreLibrary
 
         public void startClient()
         {
-            client.startClient("70.113.42.22", 69);
+            client.startClient("SERVERIP", 69);
         }
 
         public List<Vendor> getVenderList()

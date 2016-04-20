@@ -12,3 +12,6 @@ C:\Users\Tyler Gregorcyk\documents\visual studio 2015\Projects\Buying Form\Buyin
 C:\Users\Tyler Gregorcyk\documents\visual studio 2015\Projects\Buying Form\Buying Form\bin\Debug\TylerGregorcyksLibrary.dll
 C:\Users\Tyler Gregorcyk\documents\visual studio 2015\Projects\Buying Form\Buying Form\bin\Debug\TylerGregorcyksLibrary.pdb
 C:\Users\Tyler Gregorcyk\documents\visual studio 2015\Projects\Buying Form\Buying Form\obj\Debug\Buying_Form.VendorInfoUI.resources
+C:\Users\Tyler Gregorcyk\Documents\Visual Studio 2015\Projects\Buying Form\MarketApp(Client)\Buying Form\bin\Debug\Buying Form.exe.config
+C:\Users\Tyler Gregorcyk\Documents\Visual Studio 2015\Projects\Buying Form\MarketApp(Client)\Buying Form\obj\Debug\Buying Form.exe
+C:\Users\Tyler Gregorcyk\Documents\Visual Studio 2015\Projects\Buying Form\MarketApp(Client)\Buying Form\obj\Debug\Buying Form.pdb

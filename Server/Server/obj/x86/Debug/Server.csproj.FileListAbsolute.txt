@@ -1,0 +1,11 @@
+C:\Users\Tyler Gregorcyk\AppData\Local\Temporary Projects\Server\bin\Debug\Server.exe
+C:\Users\Tyler Gregorcyk\AppData\Local\Temporary Projects\Server\bin\Debug\Server.pdb
+C:\Users\Tyler Gregorcyk\AppData\Local\Temporary Projects\Server\obj\x86\Debug\Server.exe
+C:\Users\Tyler Gregorcyk\AppData\Local\Temporary Projects\Server\obj\x86\Debug\Server.pdb
+C:\Users\Tyler Gregorcyk\documents\visual studio 2010\Projects\Server\Server\obj\x86\Debug\Server.exe
+C:\Users\Tyler Gregorcyk\documents\visual studio 2010\Projects\Server\Server\obj\x86\Debug\Server.pdb
+C:\Users\Tyler Gregorcyk\documents\visual studio 2010\Projects\Server\Server\bin\Debug\Server.exe
+C:\Users\Tyler Gregorcyk\documents\visual studio 2010\Projects\Server\Server\bin\Debug\Server.pdb
+C:\Users\Tyler Gregorcyk\Documents\Visual Studio 2010\Projects\Server\Server\bin\Debug\TylerGregorcyksLibrary.dll
+C:\Users\Tyler Gregorcyk\Documents\Visual Studio 2010\Projects\Server\Server\bin\Debug\TylerGregorcyksLibrary.pdb
+C:\Users\Tyler Gregorcyk\Documents\Visual Studio 2010\Projects\Server\Server\obj\x86\Debug\Server.csprojResolveAssemblyReference.cache
