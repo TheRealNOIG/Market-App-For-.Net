@@ -1,15 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TylerGregorcyksLibrary.Main;
+using System.Net.Sockets;
 
 namespace StoreLibrary
 {
     public class Client
     {
-        public static SimpleClient client = new SimpleClient();
+        public SimpleClient client = new SimpleClient();
 
         public Client()
         { }
@@ -23,14 +21,14 @@ namespace StoreLibrary
         {
             List<Vendor> vendorsList = new List<Vendor>();
             int vendorCount = 0;
-            try { vendorCount = Int32.Parse(client.sendAndReceiveMessage("mysql:getvendorcount")); } catch (Exception e) { Console.WriteLine(e); }
+            try { vendorCount = Int32.Parse(client.sendAndReceiveMessage("mysql:getvendorcount")); } catch { client.connected = false; return null; }
             string sendCommand = "mysqllist:";
             for (int i = 1; i <= vendorCount; i++)
             {
                 sendCommand += "getvendorbyid." + i + ";";
             }
             string receive = string.Empty;
-            try { receive = client.sendAndReceiveMessage(sendCommand); } catch (Exception e) { Console.WriteLine(e.Message); }
+            try { receive = client.sendAndReceiveMessage(sendCommand); } catch  {  }
             string[] received = StringFunctions.SplitString(receive, ';');
             try
             {
@@ -50,7 +48,7 @@ namespace StoreLibrary
                         });
                     }
                 }
-            } catch (Exception e) { Console.WriteLine(e.Message); }
+            } catch { }
             return vendorsList;
         }
 
@@ -58,14 +56,14 @@ namespace StoreLibrary
         {
             List<Item> itemList = new List<Item>();
             int itemCount = 0;
-            try { itemCount = Int32.Parse(client.sendAndReceiveMessage("mysql:getitemcount")); } catch (Exception e) { Console.WriteLine(e.Message); }
+            try { itemCount = Int32.Parse(client.sendAndReceiveMessage("mysql:getitemcount")); } catch  { client.connected = false; return null; }
             string sendCommand = "mysqllist:";
             for (int i = 1; i <= itemCount; i++)
             {
                 sendCommand += "getitembyid." + i + ";";
             }
             string receive = string.Empty;
-            try { receive = client.sendAndReceiveMessage(sendCommand); } catch (Exception e) { Console.WriteLine(e.Message); }
+            try { receive = client.sendAndReceiveMessage(sendCommand); } catch {  }
             string[] received = StringFunctions.SplitString(receive, ';');
             Vendor owner = new Vendor();
             try {
@@ -82,7 +80,7 @@ namespace StoreLibrary
                                     owner = vendor;
                                 }
                             }
-                            catch (Exception e) { Console.WriteLine(e.Message); }
+                            catch { }
                         }
                         itemList.Add(new Item
                         {
@@ -95,7 +93,7 @@ namespace StoreLibrary
                         });
                     }
                 }
-            } catch (Exception e) { Console.WriteLine(e.Message); }
+            } catch { }
             return itemList;
         }
 
